@@ -1,4 +1,4 @@
- fetch("https://www.hatchways.io/api/assessment/work_orders")
+fetch("https://www.hatchways.io/api/assessment/work_orders")
       .then(response => response.json())
       .then((data) => {
 
@@ -10,15 +10,20 @@
       console.log(deadlines)
       //for (let i = 0; i < ids.length; i++)
       //console.log(deadlines[i])
-  })
 
-      fetch("https://www.hatchways.io/api/assessment/workers/" + 1)
+      var uniqueWorkerIds = workerIds.filter(function(item, pos){
+        return workerIds.indexOf(item)== pos;
+      });
+      console.log(uniqueWorkerIds );
+      for (let i = 0; i < uniqueWorkerIds; i++)
+
+      fetch("https://www.hatchways.io/api/assessment/workers/" + i)
       .then(response => response.json())
       .then((data) => {
-      for (let i = 0; i < data.worker.id; i++)
-      var email = data.worker.email
+      var email = data.worker[i].email
       console.log(email)
+  })
+
 
   });
-
 
